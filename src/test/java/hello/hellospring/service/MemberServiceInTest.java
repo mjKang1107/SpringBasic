@@ -1,31 +1,28 @@
 package hello.hellospring.service;
-
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @SpringBootTest
-@Transactional //테스트와 같이 있을경우 트랜잭션을 실행시키고 항상 롤백해줌
+
+@Transactional
 class MemberServiceInTest {
 
-   @Autowired MemberService memberService;
-   @Autowired MemberRepository memberRepository;
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
     @Test
+    //@Commit
     public void 회원가입() throws Exception {
         //Given
         Member member = new Member();
-        member.setName("spring");
+        member.setName("spring3");
         //When
         Long saveId = memberService.join(member);
         //Then
